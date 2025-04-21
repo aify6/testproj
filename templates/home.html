@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Forest Fire Prediction Form</title>
+</head>
+<body>
+    <h1>Forest Fire Prediction Form</h1>
+    <form action="{{ url_for('predict_datapoint') }}" method="POST">
+        <label>Temperature (°C):</label><br>
+        <input type="text" name="temperature" required><br><br>
+
+        <label>Relative Humidity (%):</label><br>
+        <input type="text" name="rh" required><br><br>
+
+        <label>Wind Speed (km/h):</label><br>
+        <input type="text" name="ws" required><br><br>
+
+        <label>Rainfall (mm):</label><br>
+        <input type="text" name="rain" required><br><br>
+
+        <label>FFMC Index:</label><br>
+        <input type="text" name="ffmc" required><br><br>
+
+        <label>DMC Index:</label><br>
+        <input type="text" name="dmc" required><br><br>
+
+        <label>ISI Index:</label><br>
+        <input type="text" name="isi" required><br><br>
+
+        <label>Region:</label><br>
+        <select name="region" required>
+            <option value="">Select region</option>
+            <option value="0">Bejaia</option>
+            <option value="1">Sidi bes-abbes</option>
+        </select><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <h2>Prediction Result
+    {% if prediction %}
+        <p>The predicted class is: {{ prediction }}</p>
+    {% endif %}
+    {% if error %}
+        <p>{{ error }}</p>
+    {% endif %}</h2>
+</body>
+</html>
